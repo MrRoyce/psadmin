@@ -1,5 +1,7 @@
 'use strict';
 
+// authorApi.js
+
 //This file is mocking a web API by hitting hard coded data.
 // Files
 var authors = require('./authorData').authors;
@@ -17,6 +19,7 @@ var _clone = function (item) {
 };
 
 var AuthorApi = {
+
     getAllAuthors : function () {
         return _clone(authors);
     },
@@ -45,7 +48,6 @@ var AuthorApi = {
     },
 
     deleteAuthor : function (id) {
-        debugger;
         console.log('Pretend this just deleted the author from the DB via an AJAX call...');
         _.remove(authors, { id : id});
     }

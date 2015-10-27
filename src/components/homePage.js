@@ -1,7 +1,7 @@
 'use strict';
 
 // Modules
-const React = require('react'),
+const React  = require('react'),
       Router = require('react-router');
 
 // Files

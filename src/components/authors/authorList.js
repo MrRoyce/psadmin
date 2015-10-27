@@ -22,7 +22,6 @@ class AuthorList extends React.Component{
     // Tell actions that an author was deleted
     deleteAuthor (id, event) {
         event.preventDefault();
-        debugger;
         AuthorActions.deleteAuthor(id);
         toastr.success('Author Deleted');
     }

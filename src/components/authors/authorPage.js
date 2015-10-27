@@ -32,7 +32,6 @@ class AuthorPage extends React.Component{
     }
 
     _onChange () {
-        debugger;
         this.setState({authors : AuthorStore.getAllAuthors()});
     }
 

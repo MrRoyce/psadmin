@@ -1,48 +1,49 @@
 'use strict';
 
 const Dispatcher  = require('../dispatcher/appDispatcher'),
-      AuthorApi   = require('../api/authorApi'),
+      CourseApi   = require('../api/courseApi'),
       ActionTypes = require('../constants/actionTypes');
 
-var AuthorActions = {
-    createAuthor : (author) => {
+var CourseActions = {
+    createCourse : (course) => {
 
         // In a real app, this would be asynchrouns, and the action would
         // be in a callback or promise
-        var newAuthor = AuthorApi.saveAuthor(author);
+        var newCourse = CourseApi.saveCourse(course);
 
-        // Hey Dispatcher, go tell the stores that an author was just created
+        // Hey Dispatcher, go tell the stores that an course was just created
         //  Publish the action
         Dispatcher.dispatch({
-            actionType : ActionTypes.CREATE_AUTHOR,
-            author     : newAuthor
+            actionType : ActionTypes.CREATE_COURSE,
+            course     : newCourse
         });
     },
 
-    updateAuthor : (author) => {
+    updateCourse : (course) => {
 
         // In a real app, this would be asynchrouns, and the action would
         // be in a callback or promise
-        var updatedAuthor = AuthorApi.saveAuthor(author);
+        var updatedCourse = CourseApi.saveCourse(course);
 
         //  Publish the action
         Dispatcher.dispatch({
-            actionType : ActionTypes.UPDATE_AUTHOR,
-            author     : updatedAuthor
+            actionType : ActionTypes.UPDATE_COURSE,
+            course     : updatedCourse
         });
     },
 
-    deleteAuthor : (id) => {
+    deleteCourse : (id) => {
+
         // In a real app, this would be asynchrouns, and the action would
         // be in a callback or promise
-        AuthorApi.deleteAuthor(id);
+        CourseApi.deleteCourse(id);
 
         //  Publish the action
         Dispatcher.dispatch({
-            actionType : ActionTypes.DELETE_AUTHOR,
+            actionType : ActionTypes.DELETE_COURSE,
             id         : id
         });
     }
 };
 
-module.exports = AuthorActions;
+module.exports = CourseActions;

@@ -1,19 +1,21 @@
 /* eslint-disable no-underscore-dangle*/
 'use strict';
 
+// authorStore.js
+
 // Modules
-const assign = require('object-assign'),  // Merge multiple objects 'PonyFill'
+var assign = require('object-assign'),  // Merge multiple objects 'PonyFill'
       _      = require('lodash');
 
 // Files
-const Dispatcher  = require('../dispatcher/appDispatcher'),
-      ActionTypes = require('../constants/actionTypes');
+var Dispatcher  = require('../dispatcher/appDispatcher'),
+    ActionTypes = require('../constants/actionTypes');
 
 // Functions
-const EventEmitter = require('events').EventEmitter;
+var EventEmitter = require('events').EventEmitter;
 
 //  Vars
-let existingAuthor,
+var existingAuthor,
     existingAuthorIndex,
     _authors = [],
     CHANGE_EVENT = 'change',
@@ -26,7 +28,7 @@ let existingAuthor,
         },
 
         removeChangeListener : function (callback) {
-            this.removeListner(CHANGE_EVENT, callback);
+            this.removeListener(CHANGE_EVENT, callback);
         },
 
         emitChange : function () {
@@ -67,7 +69,6 @@ Dispatcher.register( (action) => {
             break;
 
         case ActionTypes.DELETE_AUTHOR :
-            debugger;
             _.remove(_authors, (author) => {
                 return action.id === author.id;
             });

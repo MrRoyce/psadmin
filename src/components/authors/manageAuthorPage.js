@@ -1,6 +1,8 @@
 /* eslint-disable no-alert*/
 'use strict';
 
+// manageAuthorPage.js
+
 // Modules
 const React  = require('react'),
       Router = require('react-router'),
