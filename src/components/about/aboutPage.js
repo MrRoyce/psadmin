@@ -1,3 +1,4 @@
+/* eslint-disable no-alert, no-unsued-vars*/
 'use strict';
 
 // Modules
@@ -9,6 +10,23 @@ class About extends React.Component{
         super();
         //Utility.bind(this, ['delete', 'togglePurchase']);
     }
+
+    /*static willTransitionTo (transition, params, query, callback) {
+
+        if (!confirm('Are you sure?')) {
+            transition.about();
+        } else {
+            callback();
+            return;
+        }
+    }
+
+    static willTransitionFrom (transition) {
+
+        if (!confirm('Are you really sure?')) {
+            transition.about();
+        }
+    }*/
 
     render () {
         return (

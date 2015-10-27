@@ -1,27 +1,39 @@
+/* eslint-disable no-underscore-dangle*/
 'use strict';
 
 // Modules
-const React = require('react');
+const
+      React   = require('react'),
+      Router  = require('react-router');
+
+// Functions
+const Link   = Router.Link;
 
 // Files
-const Utility    = require('./../common/utility.js'),
-      AuthorList = require('./authorList.js');
-
-// Files
-const AuthorApi = require('../api/authorApi');
+const AuthorList  = require('./authorList.js'),
+      AuthorStore = require('../../stores/authorStore'),
+      Utility     = require('./../common/utility.js');
 
 class AuthorPage extends React.Component{
 
     constructor () {
         super();
-        Utility.bind(this, ['componentWillMount']);
-        this.state = {authors : []}; //this.getFirstState();
+        Utility.bind(this, ['componentWillMount', 'componentWillUnmount', '_onChange']);
+        this.state = {authors : AuthorStore.getAllAuthors() }; //this.getFirstState();
     }
 
     componentWillMount () {
-        //if (this.isMounted()) {
-            this.setState({authors : AuthorApi.getAllAuthors() });
-        //}
+        AuthorStore.addChangeListener(this._onChange);
+    }
+
+    // Clean up our data when it is deleted
+    componentWillUnmount () {
+        AuthorStore.removeChangeListener(this._onChange);
+    }
+
+    _onChange () {
+        debugger;
+        this.setState({authors : AuthorStore.getAllAuthors()});
     }
 
     render () {
@@ -29,6 +41,7 @@ class AuthorPage extends React.Component{
         return (
             <div>
                 <h1>Authors</h1>
+                <Link to="addAuthor" className="btn btn-default">Add Author</Link>
                 <AuthorList authors={this.state.authors} />
             </div>
         );
