@@ -17,6 +17,10 @@ var _generateId = function () {
     return (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4());
 };
 
+var _generateCourseId = function(course) {
+	return course.title.replace(' ', '-');
+}
+
 var _clone = function (item) {
     return JSON.parse(JSON.stringify(item)); //return cloned copy so that the item is passed by value instead of by reference
 };
@@ -40,12 +44,12 @@ var CourseApi = {
         } else {
             //Just simulating creation here.
             //The server would generate ids for new courses in a real app.
-            //Cloning so copy returned is passed by value rather than by reference.
-            course.id = _generateId();
+           
+            course.id = _generateCourseId(course);
             course.author.id = _generateId();
             courses.push(course);
         }
-
+		 //Cloning so copy returned is passed by value rather than by reference.
         return _clone(course);
     },
 
